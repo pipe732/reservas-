@@ -90,7 +90,7 @@ reservas-barberia/
 ![Catálogo](screenshots/image.png)
 
 **Formulario de reserva**
-![Reservar](screenshots/image copy.png)
+![Reservar](screenshots/image-copy.png)
 
 **Panel de administración**
-![Admin](screenshots/image copy 2.png)
+![Admin](screenshots/image_copy_2.png)
