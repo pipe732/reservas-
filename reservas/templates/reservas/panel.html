@@ -1,0 +1,46 @@
+{% extends "reservas/base.html" %}
+{% block titulo %}Panel de reservas{% endblock %}
+
+{% block contenido %}
+<h4 class="mb-4">Panel de reservas</h4>
+
+<div class="table-responsive">
+    <table class="table table-hover bg-white shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>Cliente</th>
+                <th>Servicio</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reserva in reservas %}
+            <tr>
+                <td>{{ reserva.nombre_cliente }}<br><small class="text-muted">{{ reserva.telefono_cliente }}</small></td>
+                <td>{{ reserva.servicio.nombre }}</td>
+                <td>{{ reserva.fecha }}</td>
+                <td>{{ reserva.hora }}</td>
+                <td>
+                    {% if reserva.estado == "confirmada" %}
+                        <span class="badge bg-success">Confirmada</span>
+                    {% elif reserva.estado == "cancelada" %}
+                        <span class="badge bg-danger">Cancelada</span>
+                    {% else %}
+                        <span class="badge bg-warning text-dark">Pendiente</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'cambiar_estado' reserva.id 'confirmada' %}" class="btn btn-sm btn-outline-success">Confirmar</a>
+                    <a href="{% url 'cambiar_estado' reserva.id 'cancelada' %}" class="btn btn-sm btn-outline-danger">Cancelar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="6" class="text-center text-muted">No hay reservas todavía.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

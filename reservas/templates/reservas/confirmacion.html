@@ -1,0 +1,24 @@
+{% extends "reservas/base.html" %}
+{% block titulo %}Reserva confirmada{% endblock %}
+
+{% block contenido %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm text-center">
+            <div class="card-body py-5">
+                <div class="mb-3" style="font-size: 3rem;">✅</div>
+                <h4>¡Reserva recibida!</h4>
+                <p class="text-muted">Te contactaremos para confirmar tu cita.</p>
+                <hr>
+                <p class="mb-1"><strong>Servicio:</strong> {{ reserva.servicio.nombre }}</p>
+                <p class="mb-1"><strong>Fecha:</strong> {{ reserva.fecha }}</p>
+                <p class="mb-1"><strong>Hora:</strong> {{ reserva.hora }}</p>
+                <p class="mb-3"><strong>Estado:</strong>
+                    <span class="badge bg-warning text-dark">{{ reserva.get_estado_display }}</span>
+                </p>
+                <a href="{% url 'catalogo' %}" class="btn btn-dark">Volver al inicio</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
